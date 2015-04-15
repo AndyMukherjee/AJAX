@@ -131,14 +131,14 @@ var showAnswere = function(answere) {
 	);
 
 	
-// set the date asked property in result
+// set the date replied property in result
 	var replied = result.find('.replied-date');
 	var date = new Date(1000*answere.replied_date);
 	replied.text(date.toString());
 
 	
 
-	// set some properties related to asker
+	// set some properties related to the replier
 	var replier = result.find('.replier');
 	replier.html('<p>Name: <a target="_blank" href=http://stackoverflow.com/users/' + answere.owner.user_id + ' >' +
 													answere.owner.display_name +
