@@ -170,19 +170,18 @@ var showError = function(error){
 var getInspiration = function(tags) {
 	
 	// the parameters we need to pass in our request to StackOverflow's API
-	var request = {tagged: tags,
+	var request = {
 								site: 'stackoverflow',
-								order: 'desc',
-								sort: 'relevence'};
+								};
 	
 	var result = $.ajax({
-		url: "http://api.stackexchange.com/2.2/questions/unanswered",
+		url: "http://api.stackexchange.com/2.2/tags/"+tags+"/top-answerers/all_time",
 		data: request,
 		dataType: "jsonp",
 		type: "GET",
 		})
 	.done(function(result){
-		var searchResults = showSearchResults(request.tagged, result.items.length);
+		var searchResults = showSearchResults(request, result.items.length);
 
 		$('.search-results').html(searchResults);
 
